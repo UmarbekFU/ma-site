@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Umarbek</title>
+  <style>
+    /* Include base styles from index.html */
+
+    /* Project-specific styles */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background-color: #f5f5f7;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 10px 0;
+      color: #1d1d1f;
+    }
+
+    .project-description {
+      color: #515154;
+      font-size: 0.95em;
+      line-height: 1.5;
+      margin: 0 0 20px 0;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .project-tag {
+      font-size: 0.8em;
+      padding: 4px 10px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 15px;
+      color: #515154;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .project-link {
+      color: #06c;
+      text-decoration: none;
+      font-size: 0.9em;
+      display: flex;
+      align-items: center;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .project-link svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 0 22px;
+      }
+    }
+
+    /* Animation for page load */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Dynamic header */
+    header {
+      transition: transform 0.3s ease;
+    }
+
+    header.hidden {
+      transform: translateY(-100%);
+    }
+
+    /* Animated cards */
+    .project-card {
+      animation: fadeIn 0.6s ease backwards;
+    }
+
+    .project-card:nth-child(1) { animation-delay: 0.1s; }
+    .project-card:nth-child(2) { animation-delay: 0.2s; }
+    .project-card:nth-child(3) { animation-delay: 0.3s; }
+
+    /* Interactive project images */
+    .project-image {
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+
+    /* Animated tags */
+    .project-tag {
+      transition: all 0.3s ease;
+    }
+
+    .project-tag:hover {
+      background: rgba(0, 102, 204, 0.1);
+      color: #06c;
+      transform: translateY(-2px);
+    }
+
+    /* Loading animation for images */
+    .project-image.loading {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% { background-color: #f5f5f7; }
+      50% { background-color: #e5e5e7; }
+      100% { background-color: #f5f5f7; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="now.html">Now</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Projects</h1>
+    <p>A collection of my technical works and experiments</p>
+  </section>
+
+  <main>
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <article class="project-card">
+        <div class="project-image" style="background-image: url('path/to/project1-image.jpg')"></div>
+        <div class="project-content">
+          <h2 class="project-title">Personal AI Assistant</h2>
+          <p class="project-description">
+            A custom AI assistant built with OpenAI's GPT API to help with daily tasks and productivity.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">AI</span>
+            <span class="project-tag">API</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              View Code
+            </a>
+            <a href="#" class="project-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/>
+              </svg>
+              Live Demo
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card">
+        <div class="project-image" style="background-image: url('path/to/project2-image.jpg')"></div>
+        <div class="project-content">
+          <h2 class="project-title">Smart Home Dashboard</h2>
+          <p class="project-description">
+            A web-based dashboard for monitoring and controlling smart home devices using React and IoT protocols.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">React</span>
+            <span class="project-tag">IoT</span>
+            <span class="project-tag">JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              View Code
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card">
+        <div class="project-image" style="background-image: url('path/to/project3-image.jpg')"></div>
+        <div class="project-content">
+          <h2 class="project-title">Social Media Analytics Tool</h2>
+          <p class="project-description">
+            A data visualization platform that analyzes social media trends and engagement metrics.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Data Viz</span>
+            <span class="project-tag">APIs</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/>
+              </svg>
+              Live Demo
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="social-links">
+      <!-- Include your social links from index.html -->
+    </div>
+    <p>© 2024 Umarbek. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Header hide/show on scroll
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll <= 0) {
+        header.classList.remove('hidden');
+        return;
+      }
+      
+      if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
+        // Scrolling down
+        header.classList.add('hidden');
+      } else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
+        // Scrolling up
+        header.classList.remove('hidden');
+      }
+      
+      lastScroll = currentScroll;
+    });
+
+    // Image loading animation
+    document.querySelectorAll('.project-image').forEach(img => {
+      img.classList.add('loading');
+      
+      // Simulate image loading
+      const bgImg = new Image();
+      bgImg.src = img.style.backgroundImage.slice(4, -1).replace(/"/g, "");
+      
+      bgImg.onload = () => {
+        img.classList.remove('loading');
+      };
+    });
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    // Apply to all project cards
+    document.querySelectorAll('.project-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    // Add hover effect to project cards
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const xPercent = (x / rect.width - 0.5) * 20;
+        const yPercent = (y / rect.height - 0.5) * 20;
+        
+        card.style.transform = `
+          perspective(1000px)
+          rotateX(${-yPercent}deg)
+          rotateY(${xPercent}deg)
+          translateZ(10px)
+        `;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'none';
+      });
+    });
+  </script>
+</body>
+</html> 

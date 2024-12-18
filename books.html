@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Notes | Umarbek</title>
+    <style>
+        /* Inherit your base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #1c1c1c;
+            color: #ffffff;
+        }
+
+        /* Books specific styles */
+        .books-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .intro {
+            margin-bottom: 60px;
+        }
+
+        .intro h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            color: #999;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .rating-system {
+            background: #252525;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .rating-system h3 {
+            margin-top: 0;
+            color: #3b82f6;
+        }
+
+        .book-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .book-card {
+            background: #252525;
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .book-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .book-info h2 {
+            margin: 0 0 5px 0;
+            font-size: 24px;
+        }
+
+        .book-info .author {
+            color: #999;
+            font-size: 16px;
+        }
+
+        .rating {
+            background: #1c1c1c;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            color: #3b82f6;
+        }
+
+        .book-summary {
+            color: #999;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .book-notes {
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #3b82f6;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        .read-more:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .books-container {
+                padding: 20px;
+            }
+
+            .book-meta {
+                flex-direction: column;
+            }
+
+            .rating {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <!-- Include your existing navigation -->
+    </nav>
+
+    <div class="books-container">
+        <section class="intro">
+            <h1>Book Notes</h1>
+            <p>Detailed notes from the books I've read. Like Derek Sivers, I share these to encourage learning and discussion. Each rating reflects my personal value gained from the book.</p>
+            
+            <div class="rating-system">
+                <h3>Rating System</h3>
+                <p>10/10 - Life-changing, reread often<br>
+                   8/10 - Excellent, highly recommend<br>
+                   7/10 - Good, worth reading<br>
+                   5/10 - Average, has some insights</p>
+            </div>
+        </section>
+
+        <section class="book-grid">
+            <!-- Example Book Entry -->
+            <article class="book-card">
+                <div class="book-meta">
+                    <div class="book-info">
+                        <h2>Thinking, Fast and Slow</h2>
+                        <div class="author">by Daniel Kahneman</div>
+                    </div>
+                    <span class="rating">9/10</span>
+                </div>
+                <p class="book-summary">
+                    A comprehensive exploration of the two systems that drive the way we think—the fast, intuitive, and emotional system; and the slower, more deliberative, and logical system.
+                </p>
+                <div class="book-notes">
+                    <strong>Key Takeaways:</strong>
+                    <ul>
+                        <li>Our brains use two primary systems for decision making</li>
+                        <li>Cognitive biases significantly influence our daily choices</li>
+                        <li>Understanding these systems helps improve decision-making</li>
+                    </ul>
+                    <a href="/books/thinking-fast-and-slow" class="read-more">Read full notes →</a>
+                </div>
+            </article>
+
+            <!-- Add more book entries following the same pattern -->
+        </section>
+    </div>
+
+    <footer>
+        <!-- Include your existing footer -->
+    </footer>
+</body>
+</html> 

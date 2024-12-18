@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umarbek</title>
+  <style>
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #141414;
+      --text-primary: #ffffff;
+      --text-secondary: #888888;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --border: #222222;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(10, 10, 10, 0.8);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav a {
+      color: var(--text-primary);
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Main Content */
+    .hero {
+      text-align: center;
+      padding: 180px 20px 100px;
+      background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      margin: 0;
+      font-weight: 700;
+      background: linear-gradient(to right, #fff, #888);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient 8s ease infinite;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+
+    /* Featured Work Section */
+    .featured {
+      padding: 100px 20px;
+      background: var(--bg-secondary);
+    }
+
+    .featured h2 {
+      font-size: 36px;
+      margin-bottom: 60px;
+      text-align: center;
+      background: linear-gradient(to right, #fff, #666);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .work-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .work-card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      text-align: left;
+      transition: all 0.3s ease;
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+    }
+
+    .work-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+    }
+
+    .work-card h3 {
+      margin: 0 0 15px 0;
+      font-size: 24px;
+      background: linear-gradient(to right, #fff, #aaa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .work-card p {
+      color: var(--text-secondary);
+      margin: 0 0 25px 0;
+      font-size: 1.1rem;
+    }
+
+    .work-card a {
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .work-card a:hover {
+      color: var(--accent-hover);
+      transform: translateX(5px);
+    }
+
+    /* Newsletter Section */
+    .newsletter {
+      padding: 100px 20px;
+      background: var(--bg-primary);
+      text-align: center;
+    }
+
+    .newsletter-container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .newsletter h2 {
+      font-size: 64px;
+      margin: 0 0 20px 0;
+      background: linear-gradient(to right, #fff, #666);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .newsletter-subtitle {
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+
+    .newsletter-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 40px;
+    }
+
+    .newsletter-features li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .newsletter-features li svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--accent);
+      margin-right: 10px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .newsletter-form input,
+    .newsletter-form textarea {
+      width: 100%;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-form input:focus,
+    .newsletter-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .newsletter-form textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .newsletter-form button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .newsletter-note {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+    }
+
+    .social-links {
+      margin-bottom: 30px;
+    }
+
+    .social-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+    }
+
+    footer p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 48px;
+      }
+      
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .newsletter-container {
+        padding: 0 10px;
+      }
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="now.html">Now</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <h1>Umarbek</h1>
+    <p> An utter maniac</p>
+  </section>
+  <main>
+    <section class="featured">
+      <h2>Featured Work</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Latest Article</h3>
+          <p>Thoughts on economic trends and market analysis</p>
+          <a href="blog.html" class="subtle-link">Read more →</a>
+        </article>
+        <article class="card">
+          <h3>Current Project</h3>
+          <p>Building sustainable financial models</p>
+          <a href="projects.html" class="subtle-link">View project →</a>
+        </article>
+      </div>
+    </section>
+  </main>
+  <section class="newsletter">
+    <div class="newsletter-container">
+      <h2>Weekly Insights</h2>
+      <p class="newsletter-subtitle">Join my weekly newsletter on<br>finance, tech, and<br>productivity.</p>
+      
+      <ul class="newsletter-features">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.008-1.252-.241-1.865-.44-.756-.244-1.359-.374-1.307-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.12.098.145.228.164.338.034.189.021.441.002.569z"/>
+          </svg>
+          Weekly updates on finance, tech, and productivity
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          Exclusive content not found elsewhere
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          Personalized insights based on your interests
+        </li>
+      </ul>
+      <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="newsletter-note">You will get one short email every three days for a month. You can unsubscribe any time.</p>
+    </div>
+  </section>
+  <footer>
+    <div class="social-links">
+      <a href="https://t.me/@ufblog" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.008-1.252-.241-1.865-.44-.756-.244-1.359-.374-1.307-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.12.098.145.228.164.338.034.189.021.441.002.569z"/>
+        </svg>
+        Telegram
+      </a>
+      <a href="https://youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+        YouTube
+      </a>
+      <a href="https://x.com/@UmarbekFU" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        X (Twitter)
+      </a>
+    </div>
+    <p>© 2024 Umarbek. All rights reserved.</p>
+  </footer>
+</body>
+</html>
