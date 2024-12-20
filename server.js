@@ -2,8 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
-require('dotenv').config();
 const fs = require('fs');
+require('dotenv').config();
 
 const app = express();
 
@@ -11,9 +11,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Explicitly set the public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Basic test route
-app.get('/api/test', (req, res) => {
-  res.json({ message: 'Server is working!' });
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'ok',
+    message: 'Server is working!',
+    publicPath: path.join(__dirname, 'public'),
+    files: fs.readdirSync(path.join(__dirname, 'public'))
+  });
 });
 
 // MongoDB connection
@@ -26,24 +34,29 @@ if (!mongoUri) {
     .catch(err => console.error('Could not connect to MongoDB:', err));
 }
 
-// Serve static files
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('public'));
+// Serve index.html for all other routes
+app.get('*', (req, res) => {
+  const indexPath = path.join(__dirname, 'public', 'index.html');
   
-  app.get('*', (req, res) => {
-    try {
-      if (fs.existsSync(path.join(__dirname, 'public', 'index.html'))) {
-        res.sendFile(path.join(__dirname, 'public', 'index.html'));
-      } else {
-        res.send('Application is running but index.html is not found');
-      }
-    } catch (err) {
-      res.send('Error serving static files');
-    }
-  });
-}
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(404).send(`
+      <h1>Setup Issue</h1>
+      <p>index.html not found at: ${indexPath}</p>
+      <p>Current directory contents:</p>
+      <pre>${fs.readdirSync(__dirname).join('\n')}</pre>
+      <p>Public directory contents:</p>
+      <pre>${fs.existsSync(path.join(__dirname, 'public')) ? 
+        fs.readdirSync(path.join(__dirname, 'public')).join('\n') : 
+        'public directory not found'}</pre>
+    `);
+  }
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  console.log('Current directory:', __dirname);
+  console.log('Public directory:', path.join(__dirname, 'public'));
 }); 
