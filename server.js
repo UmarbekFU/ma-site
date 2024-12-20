@@ -11,13 +11,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-// Import routes
-const bookRoutes = require('./routes/books');
-const newsletterRoutes = require('./routes/newsletter');
-
-// Use routes
-app.use('/api/books', bookRoutes);
-app.use('/api/newsletter', newsletterRoutes);
+// Basic test route
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'Server is working!' });
+});
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
